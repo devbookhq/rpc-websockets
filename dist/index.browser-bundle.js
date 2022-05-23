@@ -508,6 +508,14 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
           }
 
           return;
+        }
+
+        if (message.error === null) {
+          delete message.error;
+        }
+
+        if (message.result === null) {
+          delete message.result;
         } // reject early since server's response is invalid
 
 

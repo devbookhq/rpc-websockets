@@ -224,6 +224,12 @@ export default class CommonClient extends EventEmitter {
                 }
                 return;
             }
+            if (message.error === null) {
+                delete message.error;
+            }
+            if (message.result === null) {
+                delete message.result;
+            }
             // reject early since server's response is invalid
             if ("error" in message === "result" in message)
                 this.queue[message.id].promise[1](new Error("Server response malformed. Response must include either \"result\"" +
